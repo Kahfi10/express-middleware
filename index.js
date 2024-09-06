@@ -4,13 +4,22 @@ const app = express();
 morgan = require('morgan');
 
 app.use(morgan('dev'));
+app.use((req, res, next) => {
+    console.log('First middleware');
+    next();
+    console.log('First middleware after next');
+})
+app.use((req, res, next) => {
+    console.log('Second middleware');
+    next();
+})
 
 app.use(() => {
     console.log('hei')
 })
 
 app.get('/hello', (res, req) => {
-    req.send('Hello Kahfi');
+    res.send('Hello Kahfi');
 })
 
 app.listen(3000, () => {
