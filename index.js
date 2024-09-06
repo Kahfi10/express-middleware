@@ -11,7 +11,10 @@ app.use((req, res, next) => {
     next();
 })
 
-
+app.use('/halaman', (req, res, next) => {
+    res.send('Ini adalah halaman');
+    next();
+})
 
 app.get('/hello', (res, req) => {
     console.log(req.timeRequest);
