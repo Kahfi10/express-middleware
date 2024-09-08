@@ -11,7 +11,7 @@ app.use((req, res, next) => {
     next();
 })
 
-app.get('/', (req, res, next) => {
+const auth = ('/', (req, res, next) => {
     const { password } = req.query;
     if (password === 'kahfi') {
         next();
@@ -28,7 +28,7 @@ app.get('/hello', (res, req) => {
     req.send('Hello Kahfi');
 })
 
-app.get('/admin', (res, req) => {
+app.get('/admin', auth, (res, req) => {
     req.send('Admin Page');
 })
 
