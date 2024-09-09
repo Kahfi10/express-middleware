@@ -16,7 +16,7 @@ const auth = ('/', (req, res, next) => {
     if (password === 'kahfi') {
         next();
     } 
-    res.send("Password anda salah");
+    throw new Error('Password is incorrect');
 })
 
 app.get('/',(res, req) => {
