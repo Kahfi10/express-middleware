@@ -28,12 +28,21 @@ app.get('/hello', (res, req) => {
     req.send('Hello Kahfi');
 })
 
+app.get('/error', (res, req) => {
+    bird.Fly()
+})
+
 app.get('/admin', auth, (res, req) => {
     req.send('Admin Page');
 })
 
 app.use((req, res) => {
     res.status(404).send('404 Not Found');
+})
+
+app.use((err, req, res, next) => {
+    console.log('*******************************ERROR BRO*******************************');
+    next()
 })
 
 app.listen(3000, () => {
